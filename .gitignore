@@ -1,3 +1,4 @@
 todosapp_venv/
+tailwind/node_modules/
 
 .env
