@@ -1,5 +1,13 @@
 from django.shortcuts import render
-from django.views.generic import ListView
+from django.views.generic import ListView, CreateView
+from .models import Task
 
-def home(request):
-    return render(request, "task/task_list.html")
+class TaskListView(ListView):
+    model = Task
+    context_object_name = 'tasks'
+    ordering = 'updated_at'
+
+
+class CreateTaskView(CreateView):
+    model = Task
+    fields = ['title', 'content']

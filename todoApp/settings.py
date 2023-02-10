@@ -40,6 +40,7 @@ INSTALLED_APPS = [
 
     'task',
 ]
+CRIPSY_TEMPLATE_PACK = 'bootstrap4'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
