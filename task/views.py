@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.urls import reverse_lazy
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import ListView, CreateView, DetailView, UpdateView, DeleteView
 from .models import Task
 
@@ -10,13 +11,15 @@ class TaskListView(ListView):
     paginate_by = 2
 
 
-class CreateTaskView(CreateView):
+class CreateTaskView(LoginRequiredMixin, CreateView):
     model = Task
     fields = ['title', 'content']
     success_url = '/'
 
+
 class TaskDetailView(DetailView):
     model = Task
+
 
 class TaskUpdateView(UpdateView):
     model = Task
@@ -24,6 +27,7 @@ class TaskUpdateView(UpdateView):
 
     def get_success_url(self, **kwargs):
         return reverse_lazy('task-detail', args=(self.object.id,))
+
 
 class TaskDeleteView(DeleteView):
     model = Task

@@ -7,7 +7,7 @@ class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
 
     def __str__(self):
-        return f'{self.user.username} image'
+        return f'{self.user.username} profile'
 
     
     def save(self, *args, **kwargs):
