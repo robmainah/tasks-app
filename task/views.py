@@ -7,6 +7,7 @@ class TaskListView(ListView):
     model = Task
     context_object_name = 'tasks'
     ordering = '-updated_at'
+    paginate_by = 2
 
 
 class CreateTaskView(CreateView):
